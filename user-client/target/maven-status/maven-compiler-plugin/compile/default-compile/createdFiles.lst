@@ -1,0 +1,8 @@
+com/ironhack/userclient/repository/UserRepository.class
+com/ironhack/userclient/enums/RoleName.class
+com/ironhack/userclient/UserClientApplication.class
+com/ironhack/userclient/exceptions/ConflictException.class
+com/ironhack/userclient/controller/UserController.class
+com/ironhack/userclient/exceptions/NotFoundException.class
+com/ironhack/userclient/service/UserService.class
+com/ironhack/userclient/model/User.class

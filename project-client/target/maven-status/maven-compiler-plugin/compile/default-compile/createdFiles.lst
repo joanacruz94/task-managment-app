@@ -1,0 +1,10 @@
+com/ironhack/projectclient/repository/UserProjectRepository.class
+com/ironhack/projectclient/model/UserProject.class
+com/ironhack/projectclient/service/ProjectService.class
+com/ironhack/projectclient/DTO/ResponseDTO.class
+com/ironhack/projectclient/ProjectClientApplication.class
+com/ironhack/projectclient/repository/ProjectRepository.class
+com/ironhack/projectclient/DTO/ProjectDTO.class
+com/ironhack/projectclient/DTO/ProjectUserDTO.class
+com/ironhack/projectclient/controller/ProjectController.class
+com/ironhack/projectclient/model/Project.class

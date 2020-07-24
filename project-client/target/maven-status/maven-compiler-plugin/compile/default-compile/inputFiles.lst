@@ -1,0 +1,10 @@
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/model/UserProject.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/DTO/ProjectDTO.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/DTO/ResponseDTO.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/controller/ProjectController.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/ProjectClientApplication.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/DTO/ProjectUserDTO.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/repository/ProjectRepository.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/repository/UserProjectRepository.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/service/ProjectService.java
+/Users/joanacruz/Desktop/task-management/project-client/src/main/java/com/ironhack/projectclient/model/Project.java

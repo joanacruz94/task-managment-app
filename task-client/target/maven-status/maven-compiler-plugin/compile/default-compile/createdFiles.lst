@@ -1,0 +1,13 @@
+com/ironhack/taskclient/DTO/TaskDTO.class
+com/ironhack/taskclient/controller/TaskController.class
+com/ironhack/taskclient/DTO/ErrorResponse.class
+com/ironhack/taskclient/enums/TaskUrgency.class
+com/ironhack/taskclient/DTO/ResponseDTO.class
+com/ironhack/taskclient/enums/TaskStatus.class
+com/ironhack/taskclient/exceptions/NotFoundException.class
+com/ironhack/taskclient/TaskClientApplication.class
+com/ironhack/taskclient/handler/GlobalExceptionHandler.class
+com/ironhack/taskclient/model/Task.class
+com/ironhack/taskclient/enums/TaskCategory.class
+com/ironhack/taskclient/repository/TaskRepository.class
+com/ironhack/taskclient/service/TaskService.class
