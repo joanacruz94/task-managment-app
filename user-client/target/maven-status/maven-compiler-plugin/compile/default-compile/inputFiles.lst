@@ -1,8 +1,0 @@
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/exceptions/ConflictException.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/UserClientApplication.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/exceptions/NotFoundException.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/repository/UserRepository.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/controller/UserController.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/enums/RoleName.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/model/User.java
-/Users/joanacruz/Desktop/task-management/user-client/src/main/java/com/ironhack/userclient/service/UserService.java
