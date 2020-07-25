@@ -2,6 +2,7 @@ package com.ironhack.taskclient.controller;
 
 import com.ironhack.taskclient.DTO.ResponseDTO;
 import com.ironhack.taskclient.DTO.TaskDTO;
+import com.ironhack.taskclient.DTO.TaskPostDTO;
 import com.ironhack.taskclient.model.Task;
 import com.ironhack.taskclient.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +48,25 @@ public class TaskController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Task addTask(@RequestBody Task task){
+    public Task addTask(@RequestBody TaskPostDTO task){
         return taskService.addTask(task);
     }
 
-    @PatchMapping("/updateStatus")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/updateStatus")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseDTO updateStatus(@RequestBody TaskDTO taskDTO){
         return taskService.updatePartialStatus(taskDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDTO deleteTask(@PathVariable Long id){
+        return taskService.deleteTask(id);
+    }
+
+    @DeleteMapping("/tasksProject/{projectID}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDTO deleteTasksFromProject(@PathVariable Long projectID){
+        return taskService.deleteTasksFromProject(projectID);
     }
 }

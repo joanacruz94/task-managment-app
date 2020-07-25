@@ -2,12 +2,12 @@ package com.ironhack.taskclient.service;
 
 import com.ironhack.taskclient.DTO.ResponseDTO;
 import com.ironhack.taskclient.DTO.TaskDTO;
+import com.ironhack.taskclient.DTO.TaskPostDTO;
 import com.ironhack.taskclient.exceptions.NotFoundException;
 import com.ironhack.taskclient.model.Task;
 import com.ironhack.taskclient.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -35,7 +35,8 @@ public class TaskService {
         return taskRepository.findAllByProjectIDAndResponsibleID(projectID, userID);
     }
 
-    public Task addTask(Task task){
+    public Task addTask(TaskPostDTO taskDTO){
+        Task task = new Task(taskDTO.getDescription(), taskDTO.getStatus(), taskDTO.getUrgency(), taskDTO.getCategory(), taskDTO.getProjectID(), taskDTO.getResponsibleID(), taskDTO.getStartDate(), taskDTO.getStartDate());
         return taskRepository.save(task);
     }
 
@@ -45,5 +46,19 @@ public class TaskService {
         taskRepository.save(task);
 
         return new ResponseDTO("OK", "Status task updated");
+    }
+
+    public ResponseDTO deleteTask(Long id){
+        Task task = taskRepository.findById(id).orElseThrow(() -> new NotFoundException("Task not found"));
+        taskRepository.deleteById(id);
+
+        return new ResponseDTO("OK", "Task removed");
+    }
+
+    public ResponseDTO deleteTasksFromProject(Long projectID){
+        List<Task> tasks = findAllByProject(projectID);
+        taskRepository.deleteAll(tasks);
+
+        return new ResponseDTO("OK", "Tasks removed");
     }
 }

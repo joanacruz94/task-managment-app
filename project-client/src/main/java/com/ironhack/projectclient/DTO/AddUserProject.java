@@ -1,4 +1,4 @@
-package com.ironhack.userclient.DTO;
+package com.ironhack.projectclient.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,15 +9,12 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+@AllArgsConstructor
+public class AddUserProject {
     @NotNull
-    private String name;
+    private Long projectID;
 
     @NotNull
-    private String email;
-
-    @NotNull
-    private String password;
+    private Long userID;
 }

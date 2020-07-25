@@ -6,9 +6,11 @@ import com.ironhack.taskclient.enums.TaskUrgency;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -48,8 +50,20 @@ public class Task {
     private Long responsibleID;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
+
+    public Task(String description, TaskStatus status, TaskUrgency urgency, TaskCategory category, Long projectID, Long responsibleID, LocalDate startDate, LocalDate endDate) {
+        this.description = description;
+        this.status = status;
+        this.urgency = urgency;
+        this.category = category;
+        this.projectID = projectID;
+        this.responsibleID = responsibleID;
+        if(startDate != null) this.startDate = startDate;
+        else this.startDate = LocalDate.now();
+        this.endDate = endDate;
+    }
 }

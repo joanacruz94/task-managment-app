@@ -1,10 +1,11 @@
-package com.ironhack.taskclient.model;
+package com.ironhack.notificationclient.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,4 +23,13 @@ public class Notification {
     @NotNull
     @Column(name = "user_id")
     private Long userID;
+
+    @NotNull
+    private LocalDateTime createdAt;
+
+    public Notification(String message, Long userID){
+        this.message = message;
+        this.userID = userID;
+        this.createdAt = LocalDateTime.now();
+    }
 }

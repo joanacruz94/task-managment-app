@@ -18,7 +18,6 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @ApiOperation(value = "Login method. Method returns the auth token that you will use in the header of all secured routes.")
     @PostMapping("/sign-in")
     @ResponseStatus(HttpStatus.OK)
     public JwtAuthenticationResponse loginUser(@RequestBody @Valid UserLoginRequest loginRequest) {

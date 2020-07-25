@@ -5,19 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
-    @NotNull
-    private String name;
-
-    @NotNull
-    private String email;
-
-    @NotNull
-    private String password;
+public class NotificationDTO {
+    private String message;
+    private Long userID;
 }

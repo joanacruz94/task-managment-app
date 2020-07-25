@@ -1,29 +1,33 @@
-package com.ironhack.edgeservice.model;
+package com.ironhack.taskclient.DTO;
 
+import com.ironhack.taskclient.enums.TaskCategory;
+import com.ironhack.taskclient.enums.TaskStatus;
+import com.ironhack.taskclient.enums.TaskUrgency;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-public class Task {
-    private Long id;
-
+public class TaskPostDTO {
     @NotNull
     private String description;
 
     @NotNull
-    private String status;
+    private TaskStatus status;
 
     @NotNull
-    private String urgency;
+    private TaskUrgency urgency;
 
     @NotNull
-    private String category;
+    private TaskCategory category;
 
     @NotNull
     private Long projectID;

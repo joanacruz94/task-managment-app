@@ -1,23 +1,22 @@
-package com.ironhack.userclient.DTO;
+package com.ironhack.edgeservice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
-    @NotNull
-    private String name;
+public class UserProject {
+    private Long id;
 
     @NotNull
-    private String email;
+    private Long userID;
 
     @NotNull
-    private String password;
+    private Long projectID;
+
+    @NotNull
+    private boolean isOwner;
 }

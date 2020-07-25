@@ -1,9 +1,11 @@
 package com.ironhack.edgeservice.controller.implementation;
 
+import com.ironhack.edgeservice.DTO.AddUserProject;
 import com.ironhack.edgeservice.DTO.ProjectDTO;
 import com.ironhack.edgeservice.DTO.ProjectUserDTO;
 import com.ironhack.edgeservice.DTO.ResponseDTO;
 import com.ironhack.edgeservice.model.Project;
+import com.ironhack.edgeservice.model.UserProject;
 import com.ironhack.edgeservice.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,10 +31,16 @@ public class ProjectController {
         return projectService.findAll();
     }
 
-    @GetMapping("/projectsByUser")
+    @GetMapping("/projectsByUser/{userID}")
     @ResponseStatus(HttpStatus.OK)
     public List<Project> findAllByUser(@PathVariable Long userID){
         return projectService.findAllByUser(userID);
+    }
+
+    @GetMapping("/membersOfProject/{projectID}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserProject> findMembersOfProject(@PathVariable Long projectID){
+        return projectService.findMembersOfProject(projectID);
     }
 
     @PostMapping("")
@@ -42,8 +50,20 @@ public class ProjectController {
     }
 
     @PatchMapping("/updateDescription")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public ResponseDTO updateDescription(@RequestBody ProjectDTO project){
         return projectService.updatePartialDescription(project);
+    }
+
+    @PostMapping("/addMember")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseDTO addMemberToProject(@RequestBody AddUserProject projectDTO){
+        return projectService.addMemberToProject(projectDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDTO deleteProject(@PathVariable Long id){
+        return projectService.deleteProject(id);
     }
 }

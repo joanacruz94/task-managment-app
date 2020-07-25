@@ -23,7 +23,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws NotFoundException {
         User user = userService.findUserByEmail(email);
-        System.out.println("HEREEE");
         if(user == null) throw new NotFoundException("Email doesn't exist in the system");
         return UserPrincipal.create(user);
     }

@@ -1,4 +1,4 @@
-package com.ironhack.taskclient;
+package com.ironhack.notificationclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

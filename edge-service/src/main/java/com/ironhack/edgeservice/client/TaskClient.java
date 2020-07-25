@@ -2,8 +2,10 @@ package com.ironhack.edgeservice.client;
 
 import com.ironhack.edgeservice.DTO.ResponseDTO;
 import com.ironhack.edgeservice.DTO.TaskDTO;
+import com.ironhack.edgeservice.DTO.TaskPostDTO;
 import com.ironhack.edgeservice.model.Task;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +28,15 @@ public interface TaskClient {
     List<Task> findAllByUserAndProject(@PathVariable Long projectID, @PathVariable Long userID);
 
     @PostMapping("/task")
-    Task addTask(@RequestBody Task task);
+    Task addTask(@RequestBody TaskPostDTO task);
 
-    @PatchMapping("/task/updateStatus")
+    @PutMapping("/task/updateStatus")
     ResponseDTO updateStatus(@RequestBody TaskDTO taskDTO);
+
+    @DeleteMapping("/task/{id}")
+    ResponseDTO deleteTask(@PathVariable Long id);
+
+    @DeleteMapping("/task/tasksProject/{projectID}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseDTO deleteTasksFromProject(@PathVariable Long projectID);
 }

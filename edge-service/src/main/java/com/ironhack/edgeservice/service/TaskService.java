@@ -2,13 +2,13 @@ package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.DTO.ResponseDTO;
 import com.ironhack.edgeservice.DTO.TaskDTO;
+import com.ironhack.edgeservice.DTO.TaskPostDTO;
 import com.ironhack.edgeservice.client.TaskClient;
 import com.ironhack.edgeservice.exceptions.NotFoundException;
 import com.ironhack.edgeservice.model.Task;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -42,11 +42,14 @@ public class TaskService {
         return taskClient.findAllByUserAndProject(projectID, userID);
     }
 
-    public Task addTask(Task task){
+    public Task addTask(TaskPostDTO task){
         return taskClient.addTask(task);
     }
 
     public ResponseDTO updatePartialStatus(TaskDTO taskDTO){
         return taskClient.updateStatus(taskDTO);
     }
+
+    public ResponseDTO deleteTask(Long id) {
+        return taskClient.deleteTask(id);}
 }

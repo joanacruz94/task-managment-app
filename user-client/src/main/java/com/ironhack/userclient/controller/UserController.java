@@ -1,5 +1,6 @@
 package com.ironhack.userclient.controller;
 
+import com.ironhack.userclient.DTO.UserDTO;
 import com.ironhack.userclient.model.User;
 import com.ironhack.userclient.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@RequestBody User user){
+    public User addUser(@RequestBody UserDTO user){
         return userService.addUser(user);
     }
 }

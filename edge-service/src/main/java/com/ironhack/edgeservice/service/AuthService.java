@@ -41,7 +41,6 @@ public class AuthService {
                 )
         );
 
-        System.out.println("PASSEDDD");
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
@@ -50,6 +49,7 @@ public class AuthService {
         JwtAuthenticationResponse response = new JwtAuthenticationResponse(jwt);
         response.setUserRole(userPrincipal.getRole());
         response.setUsername(userPrincipal.getUsername());
+        response.setUserID(userPrincipal.getId());
 
         return response;
     }
