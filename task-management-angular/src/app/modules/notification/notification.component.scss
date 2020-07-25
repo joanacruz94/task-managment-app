@@ -1,0 +1,17 @@
+mat-card {
+  mat-card {
+    background-color: #fafafa;
+    margin-bottom: 10px;
+    border-left: 5px solid #7789ce;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      align-items: flex-start;
+    }
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+}

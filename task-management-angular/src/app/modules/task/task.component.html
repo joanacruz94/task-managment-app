@@ -1,0 +1,41 @@
+<div
+  class="main-container"
+  fxLayout="column"
+  fxLayoutAlign="space-between"
+  fxLayoutGap="50px"
+>
+  <div
+    cdkDropListGroup
+    fxLayout="row"
+    fxLayoutAlign="space-between flex-start"
+    fxLayoutGap="20px"
+  >
+    <mat-card cdkDropList fxFlex="33">
+      <h2>New ({{ tasksNew.length }})</h2>
+      <ng-container *ngFor="let task of tasksNew">
+        <mat-card cdkDrag
+          >{{ task.description }}
+          <div class="category">{{ task.category.replace("_", " ") }}</div>
+        </mat-card>
+      </ng-container>
+    </mat-card>
+    <mat-card cdkDropList fxFlex="33">
+      <h2>In Progress ({{ tasksProgress.length }})</h2>
+      <ng-container *ngFor="let task of tasksProgress">
+        <mat-card>{{ task.description }}</mat-card>
+      </ng-container>
+    </mat-card>
+    <mat-card cdkDropList fxFlex="33">
+      <h2>Completed ({{ tasksDone.length }})</h2>
+      <ng-container *ngFor="let task of tasksDone">
+        <mat-card>{{ task.description }}</mat-card>
+      </ng-container>
+    </mat-card>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end end">
+    <button mat-fab color="warn">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="main-container">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <div class="logo-container"></div>
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+          <li>
+            <button mat-button>
+              Home
+            </button>
+          </li>
+          <li>
+            <button mat-button>
+              Pricing
+            </button>
+          </li>
+          <li>
+            <button mat-button (click)="openSignUpModal()">
+              Sign up
+            </button>
+          </li>
+          <li>
+            <button id="login-button" mat-button (click)="openLoginModal()">
+              Login
+            </button>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap="20px"
+    class="side-container"
+  >
+    <div class="right-container" fxFlex="50">
+      <h1>We are the key</h1>
+      <h1>to all your projects.</h1>
+      <h1>Simplify your tasks.</h1>
+      <h2>Anytime, Anywhere</h2>
+    </div>
+    <div class="background-container" fxFlex="50"></div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-sm="column"
+  fxLayoutGap="32px"
+  fxLayoutAlign="flex-start"
+>
+  <ng-container *ngFor="let _ of [1, 2, 3, 4, 5, 6]">
+    <mat-card
+      fxFlex="0 1 calc(33.3% - 32px)"
+      fxFlex.lt-md="0 1 calc(50% - 32px)"
+      fxFlex.lt-sm="100%"
+    >
+      <h2>Project</h2>
+    </mat-card>
+  </ng-container>
+</div>

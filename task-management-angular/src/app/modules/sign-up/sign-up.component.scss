@@ -1,0 +1,21 @@
+#close-button {
+  margin-right: 10px;
+}
+
+button {
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #a088fe !important;
+}
+
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+mat-form-field {
+  mat-label {
+    color: #a088fe !important;
+  }
+}

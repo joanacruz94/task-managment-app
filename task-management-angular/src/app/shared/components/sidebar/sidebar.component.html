@@ -1,0 +1,15 @@
+<mat-nav-list>
+  <button mat-button>+ New Project</button>
+  <div *ngFor="let menuItem of menuItems">
+    <a
+      [ngClass]="{ active: activeItem === menuItem.title }"
+      (click)="changeActive(menuItem.title)"
+      mat-list-item
+      routerLinkActive="list-item-active"
+      routerLink="{{ menuItem.path }}"
+    >
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      {{ menuItem.title }}
+    </a>
+  </div>
+</mat-nav-list>
