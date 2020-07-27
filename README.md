@@ -2,17 +2,18 @@
 
 Taskey is an intuitive and easy-to-use application for management of projects, tasks and teams.
 
-https://streamable.com/yctgzn Link to a video using Taskey
+[Taskey experience video](https://streamable.com/yctgzn)
 
-https://taskey-angular-app.herokuapp.com/ Link to Taskey
+[Taskey](https://streamable.com/o6yd3t)
 
-https://taskey-edge-service.herokuapp.com/swagger-ui.html#/ Link to Swagger documentation of Taskey API
+[Swagger documentation of Taskey API](https://taskey-edge-service.herokuapp.com/swagger-ui.html#/)
 
 ## Techonologies:
 
 - Netflix OSS Feign and Eureka for architecture in microservices
 - Java Spring Boot and Hibernate for back-end development
-- Angular and TypeScript for front-development
+- Angular and Angular Material for front-end development
+- H2 database for storage
 - MongoDB for logs storage
 - Authentication with JSON Web Tokens
 - Heroku for deployment
