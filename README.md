@@ -2,7 +2,7 @@
 
 Taskey is an intuitive and easy-to-use application for management of projects, tasks and teams.
 
-<a href="https://streamable.com/yctgzn" target="_blank">Taskey user experience video</a>
+<a href="https://streamable.com/o6yd3t" target="_blank">Taskey user experience video</a>
                                                       
 <a href="https://taskey-angular-app.herokuapp.com/" target="_blank">Taskey app</a>
 
