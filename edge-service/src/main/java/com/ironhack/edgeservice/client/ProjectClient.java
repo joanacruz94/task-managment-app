@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "project-client")
+@FeignClient(name = "project-client", url = "https://taskey-project-client.herokuapp.com/")
 public interface ProjectClient {
     @GetMapping("/project/getById/{id}")
     Project findById(@PathVariable Long id);

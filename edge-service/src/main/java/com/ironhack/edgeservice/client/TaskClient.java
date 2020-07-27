@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "task-client")
+@FeignClient(name = "task-client", url = "https://taskey-task-client.herokuapp.com/")
 public interface TaskClient {
     @GetMapping("/task/getById/{id}")
     Task findById(@PathVariable Long id);

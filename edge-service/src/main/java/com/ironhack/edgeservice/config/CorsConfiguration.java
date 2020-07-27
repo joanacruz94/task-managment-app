@@ -15,7 +15,7 @@ public class CorsConfiguration {
                 registry.addMapping("/**")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://localhost:4200", "https://ffl-crm-web.herokuapp.com")
+                        .allowedOrigins("http://localhost:4200", "https://taskey-angular-app.herokuapp.com/")
                 ;
             }
         };

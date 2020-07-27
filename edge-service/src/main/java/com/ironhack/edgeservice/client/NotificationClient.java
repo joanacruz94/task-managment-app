@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@FeignClient(name = "notification-client")
+@FeignClient(name = "notification-client", url = "https://taskey-not-client.herokuapp.com/")
 public interface NotificationClient {
 
     @GetMapping("/notification/notificationsByUser/{userID}")
