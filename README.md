@@ -2,9 +2,9 @@
 
 Taskey is an intuitive and easy-to-use application for management of projects, tasks and teams.
 
-https://streamable.com/yctgzn Link to a video using the application
+https://streamable.com/yctgzn Link to a video using Taskey
 
-https://taskey-angular-app.herokuapp.com/ Link to Taskey application
+https://taskey-angular-app.herokuapp.com/ Link to Taskey
 
 https://taskey-edge-service.herokuapp.com/swagger-ui.html#/ Link to Swagger documentation of Taskey API
 
