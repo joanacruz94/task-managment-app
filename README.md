@@ -2,11 +2,11 @@
 
 Taskey is an intuitive and easy-to-use application for management of projects, tasks and teams.
 
-[Taskey experience video](https://streamable.com/yctgzn)
+[Taskey experience video](https://streamable.com/yctgzn){:target="_blank"}
 
-[Taskey](https://streamable.com/o6yd3t)
+[Taskey](https://taskey-angular-app.herokuapp.com/){:target="_blank"}
 
-[Swagger documentation of Taskey API](https://taskey-edge-service.herokuapp.com/swagger-ui.html#/)
+[Swagger documentation of Taskey API](https://taskey-edge-service.herokuapp.com/swagger-ui.html#/){:target="_blank"}
 
 ## Techonologies:
 
@@ -21,7 +21,7 @@ Taskey is an intuitive and easy-to-use application for management of projects, t
 - SMTP for e-mail sending(almost working)
 - Drag and drop techonology
 
-## Functionalities:
+## Features:
 
 - Create a project 
 - Update description of project
