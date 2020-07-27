@@ -18,12 +18,14 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @ApiOperation(value = "Sign in method. Returns token type and token to send in every request that identifies the user.")
     @PostMapping("/sign-in")
     @ResponseStatus(HttpStatus.OK)
     public JwtAuthenticationResponse loginUser(@RequestBody @Valid UserLoginRequest loginRequest) {
         return authService.authenticateUser(loginRequest);
     }
 
+    @ApiOperation(value = "Insert a new user in the system.")
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.OK)
     public User signUpUser(@RequestBody @Valid UserDTO userDTO) {
