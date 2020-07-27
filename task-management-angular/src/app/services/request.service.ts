@@ -6,7 +6,7 @@ import { AuthService } from "./auth.service";
   providedIn: "root",
 })
 export class RequestService implements OnInit {
-  baseURL: string = "http://localhost:8080/api/";
+  baseURL: string = "https://taskey-edge-service.herokuapp.com/api/";
   headers: object;
 
   constructor(

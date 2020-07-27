@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthService {
-  baseURL: string = "http://localhost:8080/api/";
+  baseURL: string = "https://taskey-edge-service.herokuapp.com/api/";
   tokenType: string;
   accessToken: string;
   email: string;
