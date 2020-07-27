@@ -10,15 +10,15 @@ https://taskey-edge-service.herokuapp.com/swagger-ui.html#/ Link to Swagger docu
 
 ## Techonologies:
 
-Netflix OSS Feign and Eureka for architecture in microservices
-Java Spring Boot and Hibernate for back-end development
-Angular and TypeScript for front-development
-MongoDB for logs storage
-Authentication with JSON Web Tokens
-Heroku for deployment
-Schedule tasks
-SMTP for e-mail sending(almost working)
-Drag and drop techonologies
+- Netflix OSS Feign and Eureka for architecture in microservices
+- Java Spring Boot and Hibernate for back-end development
+- Angular and TypeScript for front-development
+- MongoDB for logs storage
+- Authentication with JSON Web Tokens
+- Heroku for deployment
+- Schedule tasks
+- SMTP for e-mail sending(almost working)
+- Drag and drop techonology
 
 ## Functionalities
 
