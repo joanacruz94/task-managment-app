@@ -1,12 +1,12 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { Injectable, OnInit } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AuthService } from "./auth.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class RequestService implements OnInit {
-  baseURL: string = 'http://localhost:8080/api/';
+  baseURL: string = "http://localhost:8080/api/";
   headers: object;
 
   constructor(
@@ -18,7 +18,7 @@ export class RequestService implements OnInit {
 
   setAuthHeader(): any {
     return new HttpHeaders().set(
-      'Authorization',
+      "Authorization",
       this.authService.getJWToken()
     );
   }
@@ -31,7 +31,7 @@ export class RequestService implements OnInit {
           resolve(data);
         },
         (error) => {
-          reject(error);
+          reject(error.error.message);
         }
       );
     });
@@ -47,7 +47,7 @@ export class RequestService implements OnInit {
             resolve(postedData);
           },
           (error) => {
-            reject(error);
+            reject(error.error.message);
           }
         );
     });
@@ -61,7 +61,7 @@ export class RequestService implements OnInit {
           resolve(updatedData);
         },
         (error) => {
-          reject(error);
+          reject(error.error.message);
         }
       );
     });
@@ -75,7 +75,7 @@ export class RequestService implements OnInit {
           resolve(data);
         },
         (error) => {
-          reject(error);
+          reject(error.error.message);
         }
       );
     });
@@ -91,7 +91,7 @@ export class RequestService implements OnInit {
             resolve(data);
           },
           (error) => {
-            reject(error);
+            reject(error.error.message);
           }
         );
     });

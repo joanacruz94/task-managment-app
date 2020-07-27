@@ -1,5 +1,5 @@
 package com.ironhack.edgeservice.enums;
 
 public enum TaskCategory {
-    GENERAL
+    GENERAL, DEVELOPMENT, FRONT_END, BACK_END, DEV_OPS, DESIGN, DATABASE
 }

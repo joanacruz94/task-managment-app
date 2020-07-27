@@ -5,6 +5,7 @@ import com.ironhack.edgeservice.DTO.JwtAuthenticationResponse;
 import com.ironhack.edgeservice.DTO.UserDTO;
 import com.ironhack.edgeservice.DTO.UserLoginRequest;
 import com.ironhack.edgeservice.client.UserClient;
+import com.ironhack.edgeservice.exceptions.ConflictException;
 import com.ironhack.edgeservice.model.User;
 import com.ironhack.edgeservice.security.JwtTokenProvider;
 import com.ironhack.edgeservice.security.UserPrincipal;
@@ -44,7 +45,7 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-        LOGGER.info("User with [username: {}] has logged in", userPrincipal.getUsername());
+        LOGGER.info("User with [email: {}] has logged in", userPrincipal.getUsername());
 
         JwtAuthenticationResponse response = new JwtAuthenticationResponse(jwt);
         response.setUserRole(userPrincipal.getRole());
@@ -55,6 +56,11 @@ public class AuthService {
     }
 
     public User signUpUser(UserDTO userDTO){
-        return userClient.createUser(userDTO);
+        LOGGER.info("Sign up with [email: {}]", userDTO.getEmail());
+        User user = userClient.createUser(userDTO);
+        if(user == null){
+            throw new ConflictException("E-mail already registered");
+        }
+        return user;
     }
 }

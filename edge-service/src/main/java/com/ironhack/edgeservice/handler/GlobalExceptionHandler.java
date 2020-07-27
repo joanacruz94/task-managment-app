@@ -10,6 +10,8 @@ import feign.FeignException;
 import feign.RetryableException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,28 +23,35 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({BadRequestException.class, NoSuchFieldException.class, NumberFormatException.class, JsonProcessingException.class, IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse runtime(RuntimeException exception) {
+    public ErrorResponse handleRuntimeException(RuntimeException exception) {
         log.info(exception.getMessage());
         return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
     }
 
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleBadCredentialsException(BadCredentialsException exception) {
+        log.info(exception.getMessage());
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Password doesn't match!");
+    }
+
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse notFoundHandler(NotFoundException notFoundException) {
+    public ErrorResponse handleNotFoundException(NotFoundException notFoundException) {
         log.info(notFoundException.getMessage());
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), notFoundException.getMessage());
     }
 
     @ExceptionHandler(ConflictException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponse conflictHandler(ConflictException conflictException) {
+    public ErrorResponse handleConflictException(ConflictException conflictException) {
         log.info(conflictException.getMessage());
         return new ErrorResponse(HttpStatus.CONFLICT.value(), conflictException.getMessage());
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse httpClientErrorHandler(HttpClientErrorException httpClientErrorException) {
+    public ErrorResponse handleHttpClientError(HttpClientErrorException httpClientErrorException) {
         log.info(httpClientErrorException.getMessage());
         return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), httpClientErrorException.getMessage());
     }

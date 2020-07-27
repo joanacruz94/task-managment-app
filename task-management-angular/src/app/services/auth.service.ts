@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
-  baseURL: string = 'http://localhost:8080/api/';
+  baseURL: string = "http://localhost:8080/api/";
   tokenType: string;
   accessToken: string;
   email: string;
@@ -13,9 +14,10 @@ export class AuthService {
   userRole: string;
   isLogged: boolean = false;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   public setUser(user) {
+    console.log(user, "USER");
     this.tokenType = user.tokenType;
     this.accessToken = user.accessToken;
     this.email = user.email;
@@ -32,6 +34,7 @@ export class AuthService {
   }
 
   public getUserID(): number {
+    console.log(this.userID);
     return this.userID;
   }
 
@@ -51,8 +54,9 @@ export class AuthService {
   }
 
   public logout() {
-    this.tokenType = '';
-    this.accessToken = '';
+    this.tokenType = "";
+    this.accessToken = "";
     this.isLogged = false;
+    this.router.navigate([""]);
   }
 }

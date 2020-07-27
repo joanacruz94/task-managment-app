@@ -16,6 +16,9 @@ public interface NotificationClient {
     @PostMapping("/notification")
     Notification addNotification(@RequestBody NotificationDTO notificationDTO);
 
+    @PostMapping("/notification/notifications")
+    List<Notification> addListNotifications(@RequestBody List<NotificationDTO> notificationList);
+
     @DeleteMapping("/notification/{id}")
     ResponseDTO deleteNotification(@PathVariable Long id);
 }

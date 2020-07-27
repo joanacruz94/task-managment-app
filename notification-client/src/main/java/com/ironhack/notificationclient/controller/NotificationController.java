@@ -28,6 +28,12 @@ public class NotificationController {
         return notificationService.addNotification(notificationDTO);
     }
 
+    @PostMapping("/notifications")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Notification> addListNotifications(@RequestBody List<NotificationDTO> notifications){
+        return notificationService.addListNotifications(notifications);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDTO deleteNotification(@PathVariable Long id){

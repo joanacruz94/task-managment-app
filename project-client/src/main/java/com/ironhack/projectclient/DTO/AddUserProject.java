@@ -17,4 +17,7 @@ public class AddUserProject {
 
     @NotNull
     private Long userID;
+
+    @NotNull
+    private String userEmail;
 }

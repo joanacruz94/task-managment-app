@@ -1,0 +1,38 @@
+<form [formGroup]="addProjectForm" (ngSubmit)="submitProject()">
+  <h2>Create new project</h2>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      placeholder="Description"
+      formControlName="description"
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="10"
+      cdkAutosizeMaxRows="10"
+    ></textarea>
+  </mat-form-field>
+  <div class="form-buttons">
+    <button
+      type="button"
+      id="close-button"
+      mat-raised-button
+      color="primary"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="addProjectForm.invalid"
+    >
+      Add Project
+    </button>
+  </div>
+</form>

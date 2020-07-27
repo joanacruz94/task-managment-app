@@ -11,11 +11,27 @@ body {
 
 .form-input {
   width: 100%;
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 15px;
 }
 
 .form-buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #a088fe !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+  background-color: #ffa07a !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #ffa07a !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #000000 !important;
 }

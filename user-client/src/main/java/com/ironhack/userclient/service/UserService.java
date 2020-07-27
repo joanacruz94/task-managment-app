@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,10 +40,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Transactional
     public User addUser(UserDTO userDTO){
         User existUser = findByEmail(userDTO.getEmail());
         if(existUser != null) {
-            throw new ConflictException("Email already registered");
+            return null;
         }
         User user = new User(userDTO.getName(), userDTO.getEmail(), passwordEncoder.encode(userDTO.getPassword()));
         user.setRole(RoleName.ROLE_FREE);

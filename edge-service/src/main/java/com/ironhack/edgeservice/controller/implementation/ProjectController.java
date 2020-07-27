@@ -1,9 +1,6 @@
 package com.ironhack.edgeservice.controller.implementation;
 
-import com.ironhack.edgeservice.DTO.AddUserProject;
-import com.ironhack.edgeservice.DTO.ProjectDTO;
-import com.ironhack.edgeservice.DTO.ProjectUserDTO;
-import com.ironhack.edgeservice.DTO.ResponseDTO;
+import com.ironhack.edgeservice.DTO.*;
 import com.ironhack.edgeservice.model.Project;
 import com.ironhack.edgeservice.model.UserProject;
 import com.ironhack.edgeservice.service.ProjectService;
@@ -39,7 +36,7 @@ public class ProjectController {
 
     @GetMapping("/membersOfProject/{projectID}")
     @ResponseStatus(HttpStatus.OK)
-    public List<UserProject> findMembersOfProject(@PathVariable Long projectID){
+    public List<UserProjectDTO> findMembersOfProject(@PathVariable Long projectID){
         return projectService.findMembersOfProject(projectID);
     }
 

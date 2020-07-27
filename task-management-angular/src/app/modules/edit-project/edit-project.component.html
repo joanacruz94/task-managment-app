@@ -1,0 +1,34 @@
+<form [formGroup]="editProjectForm" (ngSubmit)="editProject()">
+  <h2>Edit project</h2>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      placeholder="Description"
+      formControlName="description"
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="10"
+      cdkAutosizeMaxRows="10"
+    ></textarea>
+  </mat-form-field>
+  <div class="form-buttons">
+    <button
+      type="button"
+      id="close-button"
+      mat-raised-button
+      color="primary"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="editProjectForm.invalid"
+    >
+      Update
+    </button>
+  </div>
+</form>

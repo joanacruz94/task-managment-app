@@ -10,7 +10,7 @@ import java.util.List;
 @FeignClient(name = "user-client")
 public interface UserClient {
     @GetMapping("/user/getByEmail/{email}")
-    User findByUsername(@PathVariable String email);
+    User findByEmail(@PathVariable String email);
 
     @GetMapping("/user/getById/{id}")
     User findById(@PathVariable Long id);

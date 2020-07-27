@@ -1,37 +1,11 @@
-<mat-card fxFlex="100">
-  <mat-card>
-    <span>notification</span>
-    <div>
-      <mat-icon>query_builder</mat-icon>
-      <span>hour</span>
-    </div>
-  </mat-card>
-  <mat-card>
-    <span>notification</span>
-    <div>
-      <mat-icon>query_builder</mat-icon>
-      <span>hour</span>
-    </div>
-  </mat-card>
-  <mat-card>
-    <span>notification</span>
-    <div>
-      <mat-icon>query_builder</mat-icon>
-      <span>hour</span>
-    </div>
-  </mat-card>
-  <mat-card>
-    <span>notification</span>
-    <div>
-      <mat-icon>query_builder</mat-icon>
-      <span>hour</span>
-    </div>
-  </mat-card>
-  <mat-card>
-    <span>notification</span>
-    <div>
-      <mat-icon>query_builder</mat-icon>
-      <span>hour</span>
-    </div>
-  </mat-card>
+<mat-card *ngIf="notifications" fxFlex="100">
+  <ng-container *ngFor="let notification of notifications">
+    <mat-card>
+      <span>{{ notification.message }}</span>
+      <div>
+        <mat-icon>query_builder</mat-icon>
+        <span>{{ notification.createdAt }}</span>
+      </div>
+    </mat-card>
+  </ng-container>
 </mat-card>

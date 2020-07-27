@@ -5,13 +5,21 @@ import com.ironhack.edgeservice.client.NotificationClient;
 import com.ironhack.edgeservice.client.ProjectClient;
 import com.ironhack.edgeservice.client.TaskClient;
 import com.ironhack.edgeservice.client.UserClient;
+import com.ironhack.edgeservice.exceptions.NotFoundException;
 import com.ironhack.edgeservice.model.Project;
 import com.ironhack.edgeservice.model.User;
 import com.ironhack.edgeservice.model.UserProject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
@@ -26,6 +34,8 @@ public class ProjectService {
 
     @Autowired
     TaskClient taskClient;
+
+    private static final Logger LOGGER = LogManager.getLogger(ProjectService.class);
 
     public Project findById(Long id) {
         return projectClient.findById(id);
@@ -49,34 +59,38 @@ public class ProjectService {
 
     @Transactional
     public ResponseDTO addMemberToProject(AddUserProject projectDTO){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User newMember = userClient.findByEmail(projectDTO.getUserEmail());
+        if(newMember == null) throw new NotFoundException("E-mail not registered");
+        projectDTO.setUserID(newMember.getId());
         ResponseDTO response = projectClient.addMemberToProject(projectDTO);
         if(response.getStatus().equals("OK")) {
             Project project = projectClient.findById(projectDTO.getProjectID());
             List<UserProject> members = projectClient.findMembersOfProject(projectDTO.getProjectID());
-            User newMember = userClient.findById(projectDTO.getUserID());
-            User ownerProject = null;
             for(UserProject member : members) {
-                if(!member.isOwner() && member.getUserID() != newMember.getId()) {
+                if(member.getUserID() != newMember.getId()) {
                     NotificationDTO notificationDTO = new NotificationDTO(newMember.getEmail() + " was added to the project " + project.getName(), member.getUserID());
                     notificationClient.addNotification(notificationDTO);
-                } else {
-                    ownerProject = userClient.findById(member.getUserID());
                 }
             }
-            NotificationDTO notificationNewMember = new NotificationDTO("You were added to the project " + project.getName() + " by " + ownerProject.getEmail(), newMember.getId());
-            NotificationDTO notificationOwner = new NotificationDTO("You just added to the project " + project.getName() + " the member " + newMember.getEmail(), ownerProject.getId());
+            NotificationDTO notificationNewMember = new NotificationDTO("You were added to the project " + project.getName() + " by " + auth.getName(), newMember.getId());
             notificationClient.addNotification(notificationNewMember);
-            notificationClient.addNotification(notificationOwner);
 
             return new ResponseDTO("OK", "New member was added to the project");
         }
         return new ResponseDTO("Fail", "New member wasn't added to the project");
     }
 
-    public List<UserProject> findMembersOfProject(Long projectID){
-        return projectClient.findMembersOfProject(projectID);
+    public List<UserProjectDTO> findMembersOfProject(Long projectID){
+        return projectClient.findMembersOfProject(projectID).stream()
+                .map((member) -> {
+                    User user = userClient.findById(member.getUserID());
+                    return new UserProjectDTO(user.getEmail(), member.isOwner());
+                })
+                .collect(Collectors.toList());
     }
 
+    @Transactional
     public ResponseDTO deleteProject(Long id){
         ResponseDTO response = projectClient.deleteProject(id);
         if(response.getStatus().equals("OK")) {

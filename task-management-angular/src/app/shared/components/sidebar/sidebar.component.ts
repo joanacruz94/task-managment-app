@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTES } from './sidebar-routes.config';
+import { Component, OnInit } from "@angular/core";
+import { ROUTES } from "./sidebar-routes.config";
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  selector: "app-sidebar",
+  templateUrl: "./sidebar.component.html",
+  styleUrls: ["./sidebar.component.scss"],
 })
 export class SidebarComponent implements OnInit {
   menuItems: Array<object>;
@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = ROUTES;
-    this.activeItem = 'Dashboard';
+    this.activeItem = "Open Tasks";
   }
 
   changeActive(clickedAnchor: string) {

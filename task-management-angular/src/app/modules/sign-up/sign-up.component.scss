@@ -4,7 +4,7 @@
 
 button {
   font-size: 20px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 20px;
   background-color: #a088fe !important;
 }
@@ -14,8 +14,6 @@ button:disabled {
   color: #666666 !important;
 }
 
-mat-form-field {
-  mat-label {
-    color: #a088fe !important;
-  }
+form {
+  padding: 10px;
 }

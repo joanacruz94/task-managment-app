@@ -1,0 +1,15 @@
+#close-button {
+  margin-right: 10px;
+}
+
+button {
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #a088fe !important;
+}
+
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}

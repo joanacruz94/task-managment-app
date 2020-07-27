@@ -5,37 +5,161 @@
   fxLayoutGap="50px"
 >
   <div
-    cdkDropListGroup
+    *ngIf="tasks"
     fxLayout="row"
     fxLayoutAlign="space-between flex-start"
     fxLayoutGap="20px"
   >
-    <mat-card cdkDropList fxFlex="33">
-      <h2>New ({{ tasksNew.length }})</h2>
-      <ng-container *ngFor="let task of tasksNew">
-        <mat-card cdkDrag
-          >{{ task.description }}
-          <div class="category">{{ task.category.replace("_", " ") }}</div>
+    <div
+      fxFlex="33"
+      class="list"
+      id="new"
+      cdkDropList
+      #newList="cdkDropList"
+      [cdkDropListData]="tasksNew"
+      [cdkDropListConnectedTo]="[progressList, doneList]"
+      (cdkDropListDropped)="onDrop($event)"
+    >
+      <mat-card>
+        <h2>New ({{ tasksNew.length }})</h2>
+        <mat-card
+          *ngFor="let task of tasksNew"
+          cdkDrag
+          [style.border-left]="
+            task.urgency === 'VERY_LOW'
+              ? '7px solid #d3de32'
+              : task.urgency === 'LOW'
+              ? '7px solid #fa8072'
+              : task.urgency === 'STANDARD'
+              ? '7px solid #7789ce'
+              : task.urgency === 'HIGH'
+              ? '7px solid #d21f3c'
+              : task.urgency === 'CRITICAL'
+              ? '7px solid #b43757'
+              : null
+          "
+        >
+          <div class="card-container">
+            <span>{{ task.description }}</span>
+            <div class="date-container">
+              <mat-icon>query_builder</mat-icon>
+              <span>Due on {{ task.endDate }}</span>
+            </div>
+            <div class="category-container">
+              {{ task.category.replace("_", " ") }}
+            </div>
+            <button
+              mat-mini-fab
+              class="delete-button"
+              (click)="deleteTask(task.id, task.status)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </mat-card>
-      </ng-container>
-    </mat-card>
-    <mat-card cdkDropList fxFlex="33">
-      <h2>In Progress ({{ tasksProgress.length }})</h2>
-      <ng-container *ngFor="let task of tasksProgress">
-        <mat-card>{{ task.description }}</mat-card>
-      </ng-container>
-    </mat-card>
-    <mat-card cdkDropList fxFlex="33">
-      <h2>Completed ({{ tasksDone.length }})</h2>
-      <ng-container *ngFor="let task of tasksDone">
-        <mat-card>{{ task.description }}</mat-card>
-      </ng-container>
-    </mat-card>
+      </mat-card>
+    </div>
+    <div
+      fxFlex="33"
+      class="list"
+      id="progress"
+      cdkDropList
+      #progressList="cdkDropList"
+      [cdkDropListData]="tasksProgress"
+      [cdkDropListConnectedTo]="[newList, doneList]"
+      (cdkDropListDropped)="onDrop($event)"
+    >
+      <mat-card>
+        <h2>In Progress ({{ tasksProgress.length }})</h2>
+        <mat-card
+          *ngFor="let task of tasksProgress"
+          cdkDrag
+          [style.border-left]="
+            task.urgency === 'VERY_LOW'
+              ? '7px solid #d3de32'
+              : task.urgency === 'LOW'
+              ? '7px solid #fa8072'
+              : task.urgency === 'STANDARD'
+              ? '7px solid #7789ce'
+              : task.urgency === 'HIGH'
+              ? '7px solid #d21f3c'
+              : task.urgency === 'CRITICAL'
+              ? '7px solid #b43757'
+              : null
+          "
+          ><div class="card-container">
+            <span>{{ task.description }}</span>
+            <div class="date-container">
+              <mat-icon>query_builder</mat-icon>
+              <span>Due on {{ task.endDate }}</span>
+            </div>
+            <div class="category-container">
+              {{ task.category.replace("_", " ") }}
+            </div>
+            <button
+              mat-mini-fab
+              class="delete-button"
+              (click)="deleteTask(task.id, task.status)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </mat-card>
+    </div>
+    <div
+      fxFlex="33"
+      class="list"
+      id="done"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="tasksDone"
+      [cdkDropListConnectedTo]="[newList, progressList]"
+      (cdkDropListDropped)="onDrop($event)"
+    >
+      <mat-card>
+        <h2>Completed ({{ tasksDone.length }})</h2>
+        <mat-card
+          *ngFor="let task of tasksDone"
+          cdkDrag
+          [style.border-left]="
+            task.urgency === 'VERY_LOW'
+              ? '7px solid #d3de32'
+              : task.urgency === 'LOW'
+              ? '7px solid #fa8072'
+              : task.urgency === 'STANDARD'
+              ? '7px solid #7789ce'
+              : task.urgency === 'HIGH'
+              ? '7px solid #d21f3c'
+              : task.urgency === 'CRITICAL'
+              ? '7px solid #b43757'
+              : null
+          "
+        >
+          <div class="card-container">
+            <span>{{ task.description }}</span>
+            <div class="date-container">
+              <mat-icon>query_builder</mat-icon>
+              <span>Due on {{ task.endDate }}</span>
+            </div>
+            <div class="category-container">
+              {{ task.category.replace("_", " ") }}
+            </div>
+            <button
+              mat-mini-fab
+              class="delete-button"
+              (click)="deleteTask(task.id, task.status)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </mat-card>
+    </div>
   </div>
-
   <div fxLayout="row" fxLayoutAlign="end end">
-    <button mat-fab color="warn">
-      <mat-icon>add</mat-icon>
+    <button id="add-button" mat-fab color="warn" (click)="openAddTaskModal()">
+      <mat-icon id="add-icon">add</mat-icon>
     </button>
   </div>
 </div>

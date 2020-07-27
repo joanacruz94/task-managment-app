@@ -1,16 +1,51 @@
+<div class="buttons-container">
+  <button id="new-project-button" mat-button (click)="openNewProjectModal()">
+    + New Project
+  </button>
+  <button
+    class="add-member-button"
+    #tooltip="matTooltip"
+    matTooltip="Add new member to project"
+    matTooltipPosition="below"
+    mat-fab
+    color="accent"
+    (click)="openAddMemberModal()"
+  >
+    <mat-icon id="add-member-icon">person_add</mat-icon>
+  </button>
+</div>
 <div
+  *ngIf="projects"
   fxLayout="row wrap"
   fxLayout.lt-sm="column"
   fxLayoutGap="32px"
   fxLayoutAlign="flex-start"
+  style="padding-left: 32px;"
 >
-  <ng-container *ngFor="let _ of [1, 2, 3, 4, 5, 6]">
+  <ng-container *ngFor="let project of projects">
     <mat-card
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex.lt-sm="100%"
     >
-      <h2>Project</h2>
+      <div class="buttons-container-card">
+        <button
+          mat-mini-fab
+          id="delete-button"
+          (click)="deleteProject(project.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          id="edit-button"
+          (click)="openEditProjectModal(project.id, project.description)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <h2>{{ project.name }}</h2>
+      <span>{{ project.description }}</span>
     </mat-card>
   </ng-container>
 </div>

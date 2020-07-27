@@ -13,9 +13,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class ProjectUserDTO {
     @NotNull
-    private Long projectID;
-
-    @NotNull
     private Long userID;
 
     @NotNull

@@ -22,6 +22,10 @@ public class NotificationService {
         return notificationClient.addNotification(notificationDTO);
     }
 
+    public List<Notification> addListNotifications(List<NotificationDTO> notificationsList){
+        return notificationClient.addListNotifications(notificationsList);
+    }
+
     public ResponseDTO deleteNotification(Long notificationID){
         return notificationClient.deleteNotification(notificationID);
     }

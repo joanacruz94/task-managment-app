@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NotificationService {
@@ -16,12 +17,20 @@ public class NotificationService {
     private NotificationRepository notificationRepository;
 
     public List<Notification> findAllByUser(Long userID){
-        return notificationRepository.findAllByUserID(userID);
+        return notificationRepository.findAllByUserIDOrderByCreatedAt(userID);
     }
 
     public Notification addNotification(NotificationDTO notificationDTO){
         Notification notification = new Notification(notificationDTO.getMessage(), notificationDTO.getUserID());
         return notificationRepository.save(notification);
+    }
+
+    public List<Notification> addListNotifications(List<NotificationDTO> notificationsList){
+        List<Notification> notifications = notificationsList.stream().map((notification) ->
+                new Notification(notification.getMessage(), notification.getUserID())
+        ).collect(Collectors.toList());
+
+        return notificationRepository.saveAll(notifications);
     }
 
     public ResponseDTO deleteNotification(Long id){

@@ -36,8 +36,10 @@ public class TaskPostDTO {
     @NotNull
     private Long projectID;
 
-    @NotNull
     private Long responsibleID;
+
+    @NotNull
+    private String responsibleEmail;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)

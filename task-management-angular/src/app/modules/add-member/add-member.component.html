@@ -1,0 +1,34 @@
+<form [formGroup]="addMemberForm" (ngSubmit)="addMember()">
+  <h2>Add new member</h2>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Project</mat-label>
+    <mat-select formControlName="projectID">
+      <mat-option *ngFor="let project of projects" [value]="project.id">
+        {{ project.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email Member" formControlName="userEmail" />
+  </mat-form-field>
+  <div class="form-buttons">
+    <button
+      type="button"
+      id="close-button"
+      mat-raised-button
+      color="primary"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="addMemberForm.invalid"
+    >
+      Add Member
+    </button>
+  </div>
+</form>

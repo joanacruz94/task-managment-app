@@ -1,5 +1,8 @@
 package com.ironhack.edgeservice.model;
 
+import com.ironhack.edgeservice.enums.TaskCategory;
+import com.ironhack.edgeservice.enums.TaskStatus;
+import com.ironhack.edgeservice.enums.TaskUrgency;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,13 +20,13 @@ public class Task {
     private String description;
 
     @NotNull
-    private String status;
+    private TaskStatus status;
 
     @NotNull
-    private String urgency;
+    private TaskUrgency urgency;
 
     @NotNull
-    private String category;
+    private TaskCategory category;
 
     @NotNull
     private Long projectID;

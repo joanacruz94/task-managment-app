@@ -1,0 +1,89 @@
+<form [formGroup]="addTaskForm" (ngSubmit)="submitTask()">
+  <h2>Create new task</h2>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Project</mat-label>
+    <mat-select
+      formControlName="projectID"
+      (selectionChange)="changeProjectID($event.value)"
+    >
+      <mat-option *ngFor="let project of projects" [value]="project.id">
+        {{ project.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      placeholder="Description"
+      formControlName="description"
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="5"
+      cdkAutosizeMaxRows="10"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option
+        *ngFor="let category of categoryData"
+        [value]="category.value"
+      >
+        {{ category.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Urgency</mat-label>
+    <mat-select formControlName="urgency">
+      <mat-option *ngFor="let urgency of urgencyData" [value]="urgency.value">
+        {{ urgency.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-input">
+    <mat-label>Reponsible</mat-label>
+    <mat-select formControlName="responsibleEmail">
+      <mat-option *ngFor="let member of members" [value]="member.userEmail">
+        {{ member.userEmail }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="form-input" appearance="fill">
+    <mat-label>Choose a start date</mat-label>
+    <input matInput [matDatepicker]="pickerStart" formControlName="startDate" />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="pickerStart"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #pickerStart></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="form-input" appearance="fill">
+    <mat-label>Choose an end date</mat-label>
+    <input matInput [matDatepicker]="pickerEnd" formControlName="endDate" />
+    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+    <mat-datepicker #pickerEnd></mat-datepicker>
+  </mat-form-field>
+  <div class="form-buttons">
+    <button
+      type="button"
+      id="close-button"
+      class="form-button"
+      mat-raised-button
+      color="primary"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button
+      type="submit"
+      class="form-button"
+      mat-raised-button
+      color="primary"
+      [disabled]="addTaskForm.invalid"
+    >
+      Add Task
+    </button>
+  </div>
+</form>

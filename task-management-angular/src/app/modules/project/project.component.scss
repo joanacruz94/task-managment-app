@@ -1,3 +1,48 @@
 mat-card {
   margin-bottom: 30px;
 }
+
+#new-project-button {
+  align-self: center;
+  background-color: #6bdba5;
+  height: 60px;
+  width: 250px;
+  font-size: 18px;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.add-member-button {
+  background-color: #f1c543;
+  margin-top: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding: 0 32px;
+}
+
+.buttons-container-card {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#add-member-icon {
+  font-size: 30px;
+  margin-bottom: 7px;
+  margin-right: 3px;
+}
+
+#delete-button {
+  margin-right: 5px;
+  background-color: #484f5e !important;
+}
+
+#edit-button {
+  background-color: #484f5e !important;
+}

@@ -5,6 +5,7 @@ import com.ironhack.projectclient.DTO.AddUserProject;
 import com.ironhack.projectclient.DTO.ProjectDTO;
 import com.ironhack.projectclient.DTO.ProjectUserDTO;
 import com.ironhack.projectclient.DTO.ResponseDTO;
+import com.ironhack.projectclient.exceptions.ConflictException;
 import com.ironhack.projectclient.exceptions.NotFoundException;
 import com.ironhack.projectclient.model.Project;
 import com.ironhack.projectclient.model.UserProject;
@@ -44,17 +45,21 @@ public class ProjectService {
     }
 
     public Project addProject(ProjectUserDTO projectUserDTO){
+        Project project = new Project(projectUserDTO.getName());
+        if(!projectUserDTO.getDescription().isEmpty()) project.setDescription(projectUserDTO.getDescription());
+        Project savedProject = projectRepository.save(project);
         UserProject userProject = new UserProject();
-        userProject.setProjectID(projectUserDTO.getProjectID());
+        userProject.setProjectID(savedProject.getId());
         userProject.setUserID(projectUserDTO.getUserID());
         userProject.setOwner(true);
         userProjectRepository.save(userProject);
-        Project project = new Project(projectUserDTO.getName());
-        if(!projectUserDTO.getDescription().isEmpty()) project.setDescription(projectUserDTO.getDescription());
-        return projectRepository.save(project);
+        return project;
     }
 
     public ResponseDTO addMemberToProject(AddUserProject projectDTO){
+        List<Long> members = findMembersOfProject(projectDTO.getProjectID()).stream()
+                            .map((member) -> member.getUserID()).collect(Collectors.toList());
+        if(members.contains(projectDTO.getUserID())) throw new ConflictException("User is already in the project");
         UserProject userProject = new UserProject();
         userProject.setProjectID(projectDTO.getProjectID());
         userProject.setUserID(projectDTO.getUserID());

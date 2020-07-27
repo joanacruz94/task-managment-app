@@ -30,14 +30,14 @@ public class SwaggerConfiguration {
     @Bean
     public Docket swaggerSpringfoxDocket() {
         Contact contact = new Contact(
-                "Fantastic For Loop",
+                "Joana Franqueira Marta da Cruz",
                 "...",
                 "joanamartadacruz@gmail.com");
 
         List<VendorExtension> vext = new ArrayList<>();
         ApiInfo apiInfo = new ApiInfo(
-                "CRM API",
-                "Our backend API for CRM application",
+                "Taskey API",
+                "API for Task Management Application",
                 "6.6.6",
                 "...",
                 contact,

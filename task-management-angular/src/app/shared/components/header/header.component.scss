@@ -6,3 +6,11 @@ mat-toolbar {
   background-color: #a088fe;
   color: #ffffff;
 }
+
+.logo-container {
+  height: 100px;
+  width: 200px;
+  background-image: url("../../../../assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

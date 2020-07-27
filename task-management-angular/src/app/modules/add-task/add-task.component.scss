@@ -1,0 +1,24 @@
+#close-button {
+  margin-right: 10px;
+}
+
+.form-button {
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #a088fe !important;
+}
+
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+.date-button {
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #a088fe !important;
+  color: #ffffff;
+  margin-left: 10px;
+}
