@@ -1,10 +1,4 @@
 export const ROUTES = [
-  /*{
-    path: "/dashboard",
-    title: "Dashboard",
-    icon: "dashboard",
-    active: true,
-  },*/
   {
     path: "/tasks",
     title: "Open Tasks",

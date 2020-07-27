@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DefaultComponent } from "./default.component";
-import { DashboardComponent } from "src/app/modules/dashboard/dashboard.component";
 import { TaskComponent } from "src/app/modules/task/task.component";
 import { ProjectComponent } from "src/app/modules/project/project.component";
 import { AddTaskComponent } from "src/app/modules/add-task/add-task.component";
@@ -10,7 +9,6 @@ import { AddProjectComponent } from "src/app/modules/add-project/add-project.com
 import { AddMemberComponent } from "src/app/modules/add-member/add-member.component";
 import { EditProjectComponent } from "src/app/modules/edit-project/edit-project.component";
 import { SharedModule } from "src/app/shared/shared.module";
-import { DashboardService } from "src/app/modules/dashboard.service";
 import { RouterModule } from "@angular/router";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDividerModule } from "@angular/material/divider";
@@ -34,7 +32,6 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 @NgModule({
   declarations: [
     DefaultComponent,
-    DashboardComponent,
     TaskComponent,
     NotificationComponent,
     ProjectComponent,
@@ -67,6 +64,5 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     DragDropModule,
     MatSnackBarModule,
   ],
-  providers: [DashboardService],
 })
 export class DefaultModule {}
